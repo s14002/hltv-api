@@ -15,7 +15,9 @@ def get_fnx_rating():
 def get_matches_url():
     return "http://www.hltv.org/match/2305642-immortals-winterfox-esl-pro-league-season-4-north-america"
 
-
+def get_match_id():
+    ma = get_matches_url()[26:33]
+    return ma
 
 def get_team_1_id():
     matches = get_parsed_page(get_matches_url())
@@ -95,26 +97,25 @@ def get_map_name(num):
 
 def get_win_team():
     matches = get_parsed_page(get_matches_url())
-    if get_team_1_score() > get_team_2_score():
+    if int(get_team_1_score()) > int(get_team_2_score()):
         return get_team_1_name()
-    elif get_team_1_score() < get_team_2_score():
+    elif int(get_team_1_score()) < int(get_team_2_score()):
         return get_team_2_name()
     else:
         return None
 
 def get_lose_team():
     matches = get_parsed_page(get_matches_url())
-    if get_team_1_score() < get_team_2_score():
+    if int(get_team_1_score()) < int(get_team_2_score()):
         return get_team_1_name()
-    elif get_team_1_score() > get_team_2_score():
+    elif int(get_team_1_score()) > int(get_team_2_score()):
         return get_team_2_name()
     else:
         return None
 
 if __name__ == "__main__":
-    import pprint
-    pp = pprint.PrettyPrinter()
     ###print(get_fnx_rating())#un-use
+    print(get_match_id())
     print(get_team_1_id()) #OK
     print(get_team_2_id()) #OK
     print(get_team_1_name()) #OK
@@ -122,9 +123,9 @@ if __name__ == "__main__":
     print(get_team_1_score()) #OK
     print(get_team_2_score()) #OK
     print(get_best_of()) #OK
-    #print(get_map_name_1()) #OK
-    #print(get_map_name_2())
-    #print(get_map_name_3())
+    ###print(get_map_name_1())
+    ###print(get_map_name_2())
+    ###print(get_map_name_3())
     print(get_map_name(0)) #OK
     print(get_map_name(1)) #OK
     print(get_map_name(2)) #OK
