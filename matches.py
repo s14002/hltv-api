@@ -115,20 +115,20 @@ def get_lose_team():
 
 if __name__ == "__main__":
     ###print(get_fnx_rating())#un-use
-    print(get_match_id())
-    print(get_team_1_id()) #OK
-    print(get_team_2_id()) #OK
-    print(get_team_1_name()) #OK
-    print(get_team_2_name()) #OK
-    print(get_team_1_score()) #OK
-    print(get_team_2_score()) #OK
+    #print(get_match_id())
+    #print(get_team_1_id()) #OK
+    #print(get_team_2_id()) #OK
+    #print(get_team_1_name()) #OK
+    #print(get_team_2_name()) #OK
+    #print(get_team_1_score()) #OK
+    #print(get_team_2_score()) #OK
     print(get_best_of()) #OK
     ###print(get_map_name_1())
     ###print(get_map_name_2())
     ###print(get_map_name_3())
-    print(get_map_name(0)) #OK
-    print(get_map_name(1)) #OK
-    print(get_map_name(2)) #OK
-    print(get_win_team()) #OK
-    print(get_lose_team()) #OK
+    #print(get_map_name(0)) #OK
+    #print(get_map_name(1)) #OK
+    #print(get_map_name(2)) #OK
+    #print(get_win_team()) #OK
+    #print(get_lose_team()) #OK
 

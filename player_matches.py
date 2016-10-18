@@ -6,15 +6,17 @@ import re
 def get_parsed_page(url):
     return BeautifulSoup(requests.get(url).text, "lxml")
 
-def get_matches_url():
-    return "http://www.hltv.org/match/2305887-kinguin-eu4ia-dreamhack-zowie-%20open-winter-2016-closed-qualifier"
+urls = "http://www.hltv.org/?pageid=188&matchid=25001"
+
+"""
 def get_match_id():
-    ma = get_matches_url()[26:33]
+    ma = urls[26:33]
     return ma
+"""
 
 def get_player_id():
-    matches = get_parsed_page(get_matches_url())
-    ma = matches.findAll("div", {"class": "text-center", "style": "background-color:white;width:105px;float:left;margin-left:4px;border: 1px solid rgb(189, 189, 189);border-radius: 5px;padding:2px;"})[9] #0~9
+    matches = get_parsed_page(urls)
+    ma = matches.findAll("div", {"class": "covSmallHeadline", "style": "font-weight:normal;width:20%;float:left;"})[0] #0~9
     ta = ma.find("a")["href"]
     l = len(ta)
     elta = ta[8:]
@@ -26,12 +28,34 @@ def get_player_id():
         return da
 
 def get_kill():
-    matches = get_parsed_page(get_matches_url())
-    sa = matches.find("div", {"class": "covSmallHeadline", "style": "font-weight:normal;width:10%;float:left;;text-align:center"})
+    matches = get_parsed_page(urls)
+    kill = matches.find("div", {"class": "covSmallHeadline", "style": "font-weight:normal;width:10%;float:left;text-align:center"}).text.split()[0]
+    return kill
 
-    return sa
+def get_assist():
+    matches = get_parsed_page(urls)
+    assist = matches.findAll("div", {"class": "covSmallHeadline", "style": "font-weight:normal;width:5%;float:left;text-align:center"})[0].text
+    return assist
 
+def get_death():
+    matches = get_parsed_page(urls)
+    death = matches.findAll("div", {"class": "covSmallHeadline", "style": "font-weight:normal;width:5%;float:left;text-align:center"})[1].text
+    return death
 
-#print(get_match_id())
-#print(get_player_id())
+def get_kd_ratio():
+    matches = get_parsed_page(urls)
+    ratio = matches.findAll("div", {"class": "covSmallHeadline", "style": "font-weight:normal;width:10%;float:left;text-align:center"})[1].text
+    return ratio
+
+def get_rating():
+    matches = get_parsed_page(urls)
+    rating = matches.findAll("div", {"class": "covSmallHeadline", "style": "font-weight:normal;width:10%;float:left;text-align:center"})[2].text
+    return rating
+
+#print(get_match_id()) un-use
+print(get_player_id())
 print(get_kill())
+print(get_assist())
+print(get_death())
+print(get_kd_ratio())
+print(get_rating())
