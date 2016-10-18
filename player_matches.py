@@ -7,6 +7,7 @@ def get_parsed_page(url):
     return BeautifulSoup(requests.get(url).text, "lxml")
 
 urls = "http://www.hltv.org/?pageid=188&matchid=25001"
+matches = get_parsed_page(urls)
 
 """
 def get_match_id():
@@ -15,7 +16,6 @@ def get_match_id():
 """
 
 def get_player_id():
-    matches = get_parsed_page(urls)
     ma = matches.findAll("div", {"class": "covSmallHeadline", "style": "font-weight:normal;width:20%;float:left;"})[0] #0~9
     ta = ma.find("a")["href"]
     l = len(ta)
@@ -28,27 +28,22 @@ def get_player_id():
         return da
 
 def get_kill():
-    matches = get_parsed_page(urls)
     kill = matches.find("div", {"class": "covSmallHeadline", "style": "font-weight:normal;width:10%;float:left;text-align:center"}).text.split()[0]
     return kill
 
 def get_assist():
-    matches = get_parsed_page(urls)
     assist = matches.findAll("div", {"class": "covSmallHeadline", "style": "font-weight:normal;width:5%;float:left;text-align:center"})[0].text
     return assist
 
 def get_death():
-    matches = get_parsed_page(urls)
     death = matches.findAll("div", {"class": "covSmallHeadline", "style": "font-weight:normal;width:5%;float:left;text-align:center"})[1].text
     return death
 
 def get_kd_ratio():
-    matches = get_parsed_page(urls)
     ratio = matches.findAll("div", {"class": "covSmallHeadline", "style": "font-weight:normal;width:10%;float:left;text-align:center"})[1].text
     return ratio
 
 def get_rating():
-    matches = get_parsed_page(urls)
     rating = matches.findAll("div", {"class": "covSmallHeadline", "style": "font-weight:normal;width:10%;float:left;text-align:center"})[2].text
     return rating
 
