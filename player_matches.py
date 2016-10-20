@@ -15,8 +15,8 @@ def get_match_id():
     return ma
 """
 
-def get_player_id():
-    ma = matches.findAll("div", {"class": "covSmallHeadline", "style": "font-weight:normal;width:20%;float:left;"})[0] #0~9
+def get_player_id(num):
+    ma = matches.findAll("div", {"class": "covSmallHeadline", "style": "font-weight:normal;width:20%;float:left;"})[num] #0~9
     ta = ma.find("a")["href"]
     l = len(ta)
     elta = ta[8:]
@@ -27,30 +27,42 @@ def get_player_id():
     elif l < 23:
         return da
 
-def get_kill():
-    kill = matches.find("div", {"class": "covSmallHeadline", "style": "font-weight:normal;width:10%;float:left;text-align:center"}).text.split()[0]
-    return kill
+def get_kill(num):
+    kill = matches.findAll("div", {"class": "covSmallHeadline", "style": "font-weight:normal;width:10%;float:left;text-align:center"})[num]
+    ki = kill.text.split()[0]
+    return ki
 
-def get_assist():
-    assist = matches.findAll("div", {"class": "covSmallHeadline", "style": "font-weight:normal;width:5%;float:left;text-align:center"})[0].text
+def get_assist(num):
+    assist = matches.findAll("div", {"class": "covSmallHeadline", "style": "font-weight:normal;width:5%;float:left;text-align:center"})[num].text
     return assist
 
-def get_death():
-    death = matches.findAll("div", {"class": "covSmallHeadline", "style": "font-weight:normal;width:5%;float:left;text-align:center"})[1].text
+def get_death(num):
+    death = matches.findAll("div", {"class": "covSmallHeadline", "style": "font-weight:normal;width:5%;float:left;text-align:center"})[num+1].text
     return death
 
-def get_kd_ratio():
-    ratio = matches.findAll("div", {"class": "covSmallHeadline", "style": "font-weight:normal;width:10%;float:left;text-align:center"})[1].text
+def get_kd_ratio(num):
+    ratio = matches.findAll("div", {"class": "covSmallHeadline", "style": "font-weight:normal;width:10%;float:left;text-align:center"})[num+1].text
     return ratio
 
-def get_rating():
-    rating = matches.findAll("div", {"class": "covSmallHeadline", "style": "font-weight:normal;width:10%;float:left;text-align:center"})[2].text
+def get_rating(num):
+    rating = matches.findAll("div", {"class": "covSmallHeadline", "style": "font-weight:normal;width:10%;float:left;text-align:center"})[num+2].text
     return rating
+m = 1
+while 11 > m:
 
-#print(get_match_id()) un-use
-print(get_player_id())
-print(get_kill())
-print(get_assist())
-print(get_death())
-print(get_kd_ratio())
-print(get_rating())
+    ###print(get_match_id()) un-use
+    #print(get_player_id(1*m-1)) #0 #1 #OK
+    #print(get_kill(3*m-3))#0 #3
+    #print(get_assist(2*m-2))#0 #2
+    #print(get_death(2*m-1))#1 #2
+    #print(get_kd_ratio(3*m-2)) #1
+    #print(get_rating(3*m-1)) #2
+
+
+    print(get_player_id(1*m-1)) #OK
+    print(get_kill(3*m-3)) #OK
+    print(get_assist(2*m-2)) #OK
+    print(get_death(2*m-2)) #OK
+    print(get_kd_ratio(3*m-3)) #OK
+    print(get_rating(3*m-3)) #OK
+    m+=1
