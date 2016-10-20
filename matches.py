@@ -5,7 +5,7 @@ from python_utils import converters
 def get_parsed_page(url):
     return BeautifulSoup(requests.get(url).text, "lxml")
 
-urls = "http://www.hltv.org/match/2305642-immortals-winterfox-esl-pro-league-season-4-north-america"
+urls = "http://www.hltv.org/match/2300868-alientech-nerdrage-alientech-csgo-league"
 
 matches = get_parsed_page(urls)
 
@@ -99,16 +99,16 @@ def get_lose_team():
         return None
 
 ###print(get_match_id())
-print(get_team_1_id()) #OK
-print(get_team_2_id()) #OK
-print(get_team_1_name()) #OK
-print(get_team_2_name()) #OK
-print(get_team_1_score()) #OK
-print(get_team_2_score()) #OK
-print(get_best_of()) #OK
+#print(get_team_1_id()) #OK
+#print(get_team_2_id()) #OK
+#print(get_team_1_name()) #OK
+#print(get_team_2_name()) #OK
+#print(get_team_1_score()) #OK
+#print(get_team_2_score()) #OK
+#print(get_best_of()) #OK
 print(get_map_name(0)) #OK
 print(get_map_name(1)) #OK
 print(get_map_name(2)) #OK
-print(get_win_team()) #OK
-print(get_lose_team()) #OK
+#print(get_win_team()) #OK
+#print(get_lose_team()) #OK
 
