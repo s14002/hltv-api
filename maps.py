@@ -5,8 +5,7 @@ from python_utils import converters
 def get_parsed_page(url):
     return BeautifulSoup(requests.get(url).text, "lxml")
 
-urls = "http://www.hltv.org/match/2305887-kinguin-eu4ia-dreamhack-zowie-open-winter-2016-closed-qualifier"
-
+urls = "http://www.hltv.org/match/2298810-private-vination-99damage-league-season-1"
 matches = get_parsed_page(urls)
 
 """
@@ -41,12 +40,12 @@ def get_team_2_name():
     team2name = b.find("a", {"style": "color:black;"})
     return team2name.text
 
-def get_team_1_map_score():
-    ca = matches.find("div", {"class": "hotmatchbox", "style": "margin-top: -7px;font-size: 12px;width:270px;border-top:0;"}).findAll("span")[0]
+def get_team_1_map_score(num,math):
+    ca = matches.findAll("div", {"class": "hotmatchbox", "style": "margin-top: -7px;font-size: 12px;width:270px;border-top:0;"})[num].findAll("span")[math]
     return ca.text
 
 def get_team_2_map_score():
-    cb = matches.find("div", {"class": "hotmatchbox", "style": "margin-top: -7px;font-size: 12px;width:270px;border-top:0;"}).findAll("span")[1]
+    cb = matches.findAll("div", {"class": "hotmatchbox", "style": "margin-top: -7px;font-size: 12px;width:270px;border-top:0;"})[1].findAll("span")[1]
     return cb.text
 
 def get_win_team():
@@ -106,13 +105,13 @@ def get_date():
 
 
 ###print(get_match_id())
-print(get_map_name())
-print(get_team_1_id())
-print(get_team_2_id())
-print(get_team_1_name())
-print(get_team_2_name())
+#print(get_map_name())
+#print(get_team_1_id())
+#print(get_team_2_id())
+#print(get_team_1_name())
+#print(get_team_2_name())
 print(get_team_1_map_score())
 print(get_team_2_map_score())
-print(get_win_team())
-print(get_lose_team())
-print(get_date())
+#print(get_win_team())
+#print(get_lose_team())
+#print(get_date())

@@ -1,13 +1,15 @@
-import requests
+import requests, re
 from bs4 import BeautifulSoup
 from python_utils import converters
-import re
 
 def get_parsed_page(url):
     return BeautifulSoup(requests.get(url).text, "lxml")
 
-urls = "http://www.hltv.org/?pageid=188&matchid=25001"
+urls = "http://www.hltv.org/?pageid=188&matchid=27007"
 matches = get_parsed_page(urls)
+
+if urls != matches:
+    print("redirect")
 
 def get_most_kills_user_id():
     ka = matches.findAll("div", {"class": "covSmallHeadline", "style": "font-weight:normal;width:125px;float:left;text-align:left"})[0]
