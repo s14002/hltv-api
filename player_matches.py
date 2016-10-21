@@ -5,7 +5,7 @@ from python_utils import converters
 def get_parsed_page(url):
     return BeautifulSoup(requests.get(url).text, "lxml")
 
-urls = "http://www.hltv.org/?pageid=188&matchid=28006"
+urls = "http://www.hltv.org/?pageid=188&matchid=25001"
 matches = get_parsed_page(urls)
 
 """
@@ -56,20 +56,12 @@ def get_rating(num):
 m = 1
 while 11 > m:
 
-    ###print(get_match_id()) un-use
-    #print(get_player_id(1*m-1)) #0 #1 #OK
-    #print(get_kill(3*m-3))#0 #3
-    #print(get_assist(2*m-2))#0 #2
-    #print(get_death(2*m-1))#1 #2
-    #print(get_kd_ratio(3*m-2)) #1
-    #print(get_rating(3*m-1)) #2
-
-
-    #print(get_player_id(1*m-1)) #OK
-    #print(get_kill(3*m-3)) #OK
-    #print(get_assist(2*m-2)) #OK
-    #print(get_death(2*m-2)) #OK
-    #print(get_kd_ratio(3*m-3)) #OK
+    print(get_player_id(1*m-1)) #OK
+    print(get_kill(3*m-3)) #OK
+    print(get_assist(2*m-2)) #OK
+    print(get_death(2*m-2)) #OK
+    print(get_kd_ratio(3*m-3)) #OK
     print(get_adr(m-1))
-    #print(get_rating(3*m-3)) #OK
+    print(get_rating(3*m-3)) #OK
+
     m+=1
