@@ -1,12 +1,11 @@
-import requests
+import requests,re
 from bs4 import BeautifulSoup
 from python_utils import converters
-import re
 
 def get_parsed_page(url):
     return BeautifulSoup(requests.get(url).text, "lxml")
 
-urls = "http://www.hltv.org/?pageid=188&matchid=25001"
+urls = "http://www.hltv.org/?pageid=188&matchid=28006"
 matches = get_parsed_page(urls)
 
 """
@@ -44,6 +43,13 @@ def get_kd_ratio(num):
     ratio = matches.findAll("div", {"class": "covSmallHeadline", "style": "font-weight:normal;width:10%;float:left;text-align:center"})[num+1].text
     return ratio
 
+def get_adr(num):
+    adr = matches.findAll("div", {"class": "covSmallHeadline", "style": "font-weight:normal;width:8%;float:left;;text-align:center"})
+    if len(adr) == 10:
+        return adr[num].text
+    else:
+        return None
+
 def get_rating(num):
     rating = matches.findAll("div", {"class": "covSmallHeadline", "style": "font-weight:normal;width:10%;float:left;text-align:center"})[num+2].text
     return rating
@@ -59,10 +65,11 @@ while 11 > m:
     #print(get_rating(3*m-1)) #2
 
 
-    print(get_player_id(1*m-1)) #OK
-    print(get_kill(3*m-3)) #OK
-    print(get_assist(2*m-2)) #OK
-    print(get_death(2*m-2)) #OK
-    print(get_kd_ratio(3*m-3)) #OK
-    print(get_rating(3*m-3)) #OK
+    #print(get_player_id(1*m-1)) #OK
+    #print(get_kill(3*m-3)) #OK
+    #print(get_assist(2*m-2)) #OK
+    #print(get_death(2*m-2)) #OK
+    #print(get_kd_ratio(3*m-3)) #OK
+    print(get_adr(m-1))
+    #print(get_rating(3*m-3)) #OK
     m+=1
