@@ -156,7 +156,7 @@ def get_matches():
 
                 # include link (id) to match page
                 matchd['matchid'] = match.find("div", {"class": "matchActionCell"}).find("a").get('href') #What a fucking mess lmao
-                
+
                 matches_list.append(matchd)
             except:
                 # what does this do man?
@@ -179,7 +179,7 @@ def get_results():
             resultd['date'] = datestring
             resultd['map'] = result.find("div", {"class": "matchTimeCell"}).text.strip()
             scores = result.find("div", {"class": "matchScoreCell"}).text.strip()
-            
+
             #Team 1 info
             team1div = result.find("div", {"class": "matchTeam1Cell"})
             team1 = {}
@@ -200,11 +200,11 @@ def get_results():
             resultd['team2'] = team2
 
             resultd['matchid'] = result.find("div", {"class": "matchActionCell"}).find("a").get('href') #What a fucking mess lmao
-            
+
             results_list.append(resultd)
     return(results_list)
-            
-            
+
+
 if __name__ == "__main__":
     import pprint
     pp = pprint.PrettyPrinter()
