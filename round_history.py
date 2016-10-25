@@ -5,7 +5,7 @@ from python_utils import converters
 def get_parsed_page(url):
     return BeautifulSoup(requests.get(url).text, "lxml")
 
-urls = "http://www.hltv.org/?pageid=188&matchid=27000"
+urls = "http://www.hltv.org/?pageid=188&matchid=29000"
 matches = get_parsed_page(urls)
 
 def get_round_team_1(math,num):

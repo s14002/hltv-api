@@ -5,7 +5,7 @@ from python_utils import converters
 def get_parsed_page(url):
     return BeautifulSoup(requests.get(url).text, "lxml")
 
-urls = "http://www.hltv.org/match/2300868-alientech-nerdrage-alientech-csgo-league"
+urls = "http://www.hltv.org/match/2297718-"
 
 matches = get_parsed_page(urls)
 
@@ -45,14 +45,12 @@ def get_team_2_score():
     team2score = team2.find("span", {"style": "vertical-align:30%;"})
     return team2score.text
 
-def get_best_of_test():
-    bo = matches.find("div", {"id": "mapformatbox"}).text
-    return bo
-
 def get_best_of():
-    test = get_best_of_test()
-    nb = test[13:14]
-    return nb
+    bo = matches.find("div", {"id": "mapformatbox"}).text
+    if bo.split()[1] == "Best":
+        return bo[16:17]
+    else:
+        return bo[13:14]
 
 """
 def get_map_name_1():

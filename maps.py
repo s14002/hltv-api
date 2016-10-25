@@ -5,7 +5,7 @@ from python_utils import converters
 def get_parsed_page(url):
     return BeautifulSoup(requests.get(url).text, "lxml")
 
-urls = "http://www.hltv.org/match/2298810-private-vination-99damage-league-season-1"
+urls = "http://www.hltv.org/match/2298810-"
 matches = get_parsed_page(urls)
 
 """
@@ -44,22 +44,22 @@ def get_team_1_map_score(num,math):
     ca = matches.findAll("div", {"class": "hotmatchbox", "style": "margin-top: -7px;font-size: 12px;width:270px;border-top:0;"})[num].findAll("span")[math]
     return ca.text
 
-def get_team_2_map_score():
-    cb = matches.findAll("div", {"class": "hotmatchbox", "style": "margin-top: -7px;font-size: 12px;width:270px;border-top:0;"})[1].findAll("span")[1]
+def get_team_2_map_score(num,math):
+    cb = matches.findAll("div", {"class": "hotmatchbox", "style": "margin-top: -7px;font-size: 12px;width:270px;border-top:0;"})[num].findAll("span")[math]
     return cb.text
 
-def get_win_team():
-    if int(get_team_1_map_score()) > int(get_team_2_map_score()):
+def get_win_team(num,math):
+    if int(get_team_1_map_score(num,math)) > int(get_team_2_map_score(num,math)):
         return get_team_1_name()
-    elif int(get_team_1_map_score()) < int(get_team_2_map_score()):
+    elif int(get_team_1_map_score(num,math)) < int(get_team_2_map_score(num,math)):
         return get_team_2_name()
     else:
         return None
 
-def get_lose_team():
-    if int(get_team_1_map_score()) < int(get_team_2_map_score()):
+def get_lose_team(num,math):
+    if int(get_team_1_map_score(num,math)) < int(get_team_2_map_score(num,math)):
         return get_team_1_name()
-    elif int(get_team_1_map_score()) > int(get_team_2_map_score()):
+    elif int(get_team_1_map_score(num,math)) > int(get_team_2_map_score(num,math)):
         return get_team_2_name()
     else:
         return None
@@ -110,8 +110,8 @@ print(get_team_1_id())
 print(get_team_2_id())
 print(get_team_1_name())
 print(get_team_2_name())
-print(get_team_1_map_score())
-print(get_team_2_map_score())
-print(get_win_team())
-print(get_lose_team())
+print(get_team_1_map_score(0,0))
+print(get_team_2_map_score(1,1))
+print(get_win_team(0,0))
+print(get_lose_team(1,1))
 print(get_date())
