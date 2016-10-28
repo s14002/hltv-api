@@ -5,7 +5,7 @@ from python_utils import converters
 def get_parsed_page(url):
     return BeautifulSoup(requests.get(url).text, "lxml")
 
-urls = "http://www.hltv.org/match/2297718-"
+urls = "http://www.hltv.org/match/2302648-"
 
 matches = get_parsed_page(urls)
 

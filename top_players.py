@@ -120,8 +120,14 @@ def get_best_rating_score(num):
 def get_top_players_score():
     ka = matches.findAll("div", {"class": "covSmallHeadline", "style":"font-weight:normal;width:30px;float:left;text-align:right"})
     l = len(ka)
+    m = 0
+    #if l == 5:
+    mvp = [get_most_kills_user_id(0),get_most_kills_score(0),get_most_damage_user_id(1),get_most_damage_score(1),get_most_assists_user_id(1),get_most_assists_score(1),get_most_awp_kills_user_id(1),get_most_awp_kills_score(1),get_most_first_kills_user_id(1),get_most_first_kills_score(1),get_best_rating_user_id(1),get_best_rating_score(1)]
 
-    if l == 5:
+    while 7 > m:
+         print(mvp[m])
+         m += 1
+"""
         print(get_most_kills_user_id(0))
         print(get_most_kills_score(0))
         print(get_most_damage_user_id(1))
@@ -135,18 +141,19 @@ def get_top_players_score():
         print(get_best_rating_user_id(4))
         print(get_best_rating_score(4))
 
-    elif l == 6:
-        #print(get_most_kills_user_id(0))
-        #print(get_most_kills_score(0))
-        #print(get_most_damage_user_id(1))
-        print(get_most_damage_score(1))
-        #print(get_most_assists_user_id(2))
-        #print(get_most_assists_score(2))
-        #print(get_most_awp_kills_user_id(3))
-        #print(get_most_awp_kills_score(3))
-        #print(get_most_first_kills_user_id(4))
-        #print(get_most_first_kills_score(4))
-        #print(get_best_rating_user_id(5))
-        #print(get_best_rating_score(5))
 
+    elif l == 6:
+        print(get_most_kills_user_id(0))
+        print(get_most_kills_score(0))
+        print(get_most_damage_user_id(1))
+        print(get_most_damage_score(1))
+        print(get_most_assists_user_id(2))
+        print(get_most_assists_score(2))
+        print(get_most_awp_kills_user_id(3))
+        print(get_most_awp_kills_score(3))
+        print(get_most_first_kills_user_id(4))
+        print(get_most_first_kills_score(4))
+        print(get_best_rating_user_id(5))
+        print(get_best_rating_score(5))
+"""
 print(get_top_players_score())
